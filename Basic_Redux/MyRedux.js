@@ -17,6 +17,10 @@ const reducer = (store = INITIAL_VALUE, action) => {
         {
             return {counter : store.counter - 1}; 
         }
+        else if(action.type === "ADDITION")
+            {
+                return {counter : store.counter + action.payload.number}; 
+            }
         return store;
     
 };
@@ -28,7 +32,7 @@ const store = redux.createStore(reducer);
 // Creating subscriber for store to call state;
 const subscriber = () => {
     const state = store.getState();
-    console.log(state);// Finally, we are getting the output as 1,0,1,2;
+    console.log(state);// Finally, we are getting the output as 1,0,1,2,9;
     // Now, action is passing the value for dispatch
 };
 
@@ -42,5 +46,6 @@ store.dispatch({type : "INCREMENT"});
 store.dispatch({type : "DECREMENT"});
 store.dispatch({type : "INCREMENT"});
 store.dispatch({type : "INCREMENT"});
+store.dispatch({type : "ADDITION", payload : {number : 7}});
 
 
