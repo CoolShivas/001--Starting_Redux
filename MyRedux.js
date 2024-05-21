@@ -10,3 +10,11 @@ const reducer = (store, action) => {
 // Creating store for reducer;
 const store = redux.createStore(reducer);
 
+// Creating subscriber for store to call state;
+const subscriber = () => {
+    const state = store.getState();
+    console.log(state);
+};
+
+
+
