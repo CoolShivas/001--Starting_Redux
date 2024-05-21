@@ -17,4 +17,7 @@ const subscriber = () => {
 };
 
 
+// Calling the subsciber;
+store.subscriber(subscriber);
+
 
