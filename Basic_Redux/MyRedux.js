@@ -9,7 +9,12 @@ const INITIAL_VALUE = {
 
 // Formation of reducer;
 const reducer = (store = INITIAL_VALUE, action) => {
-    return {counter : store.counter + 1}; // Passing initial value to store i.e, 1;
+    if(action.type === "INCREMENT")
+        {
+            return {counter : store.counter + 1}; 
+        }
+        return store;
+    
 };
 
 
@@ -19,7 +24,8 @@ const store = redux.createStore(reducer);
 // Creating subscriber for store to call state;
 const subscriber = () => {
     const state = store.getState();
-    console.log(state);// Here, we are getting the output as 2 instead of 1; 
+    console.log(state);// Finally, we are getting the output as 1,2,3,4; 
+    // Now, action is passing the value for dispatch
 };
 
 
@@ -28,6 +34,9 @@ store.subscribe(subscriber);
 
 
 // Calling the dispatch function;
+store.dispatch({type : "INCREMENT"});
+store.dispatch({type : "INCREMENT"});
+store.dispatch({type : "INCREMENT"});
 store.dispatch({type : "INCREMENT"});
 
 
